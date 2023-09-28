@@ -1,4 +1,4 @@
-const TestimonialStyle = {
+const OurWorkedStyle = {
   mainWrapper: {
     width: "100%",
     height: "100%",
@@ -35,20 +35,13 @@ const TestimonialStyle = {
     },
     transition: "0.3s",
     boxShadow: "0 4px 8px 0 rgba(0,0,0,0.1)",
-    height: "50vh",
+    height: "60vh",
     width: "70%",
     maxWidth: "100%",
     display: "flex",
+    alignContent: "space-between",
     flexWrap: "wrap",
     margin: "0 auto",
-  },
-  projectLinkStyle: {
-    fontSize: "18px",
-    color: "blue",
-    "&:hover": {
-      color: "red",
-    },
-    fontWeight: 600,
   },
   cardSecondWrapper: {
     display: "flex",
@@ -62,10 +55,19 @@ const TestimonialStyle = {
   },
   cardDescriptionStyle: {
     overflow: "auto",
-    maxHeight: "250px",
+    width: "100%",
     minHeight: "250px",
-    mt:3
+    maxHeight: "250px",
+    mt: 2,
     // height: "250px",
   },
+  projectLinkStyle: {
+    fontSize: "18px",
+    color: "blue",
+    "&:hover": {
+      color: "red",
+    },
+    fontWeight: 600,
+  },
 } as const;
-export default TestimonialStyle;
+export default OurWorkedStyle;

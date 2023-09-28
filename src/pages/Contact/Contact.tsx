@@ -1,222 +1,170 @@
-import { Box, Grid, Typography } from "@mui/material";
-import React from "react";
-import contactStyle from "./Contact.Style";
-import LinkdlnIcon from "../../assets/Icons/LinkdlnIcon.svg";
-import TwitterIcon from "../../assets/Icons/TwitterIcon.svg";
-import InstragramIcon from "../../assets/Icons/InstragramIcon.svg";
-import FacebookIcon from "../../assets/Icons/FacebookIcon.svg";
-import PhoneIcon from "../../assets/Icons/PhoneIcon.gif";
-import Email_Icon from "../../assets/Icons/Email_Icon.png";
-import WebsiteIcon from "../../assets/Icons/websiteIcon.png";
-import AddressIcon from "../../assets/Icons/AddressIcon.png";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import NavContactStyle from "./NavContact.style";
+import React, { useState } from "react";
+import TalkImage from "../../assets/Images/TalkImage.svg";
 
 const Contact = () => {
-  const classes = contactStyle;
-  const currentYear = new Date().getFullYear();
+  const classes = NavContactStyle;
+  const [formField, setFormField] = useState({
+    name: {
+      value: "",
+      error: "",
+    },
+    email: {
+      value: "",
+      error: "",
+    },
+    subject: {
+      value: "",
+      error: "",
+    },
+    message: {
+      value: "",
+      error: "",
+    },
+  });
 
-  const getFooter = () => {
-    return (
-      <>
-        <Box sx={classes.footerStyle}>
-          <Typography sx={{ color: "white" }} variant="subtitle1">
-            &copy; {currentYear} BigGuard Technologies. All rights reserved.
-          </Typography>
-        </Box>
-      </>
-    );
+  const handleInputOnchange = (event: any) => {
+    setFormField({
+      ...formField,
+      [event.target.name]: event.target.value,
+    });
   };
 
-  const getContactUsMethod = () => {
+  const handleSubmit = () => {
+    if (formField) {
+      console.log("submit");
+    } else {
+      console.log("please enter your remaining field");
+    }
+  };
+
+  const getContactFormMethod = () => {
     return (
       <>
-        <Typography variant="h6" sx={{ color: "white" }}>
-          contact us
-        </Typography>
-        <Box
-          sx={{
-            marginTop: {
-              xl: "40px",
-              lg: "40px",
-              md: "25px",
-              sm: "25px",
-              xs: "25px",
-            },
-          }}
-        >
-          <Typography sx={classes.contactUsInnerTextStyle} variant="subtitle1">
-            <Box
-              component={"img"}
-              src={PhoneIcon}
-              sx={classes.contactUsIconStyle}
-            />
-            <span style={{ flexGrow: 1 }}>+91 9879876545</span>
-          </Typography>
+        {/* F3F2ED */}
 
-          <Typography
-            sx={classes.contactUsInnerTextStyle}
-            variant="subtitle1"
-            mt={1}
+        <Typography variant="h5" sx={classes.testing}>
+          Hey! Let’s Talk
+        </Typography>
+        <Grid container mt={2} gap={2}>
+          <Grid
+            item
+            xl={5.7}
+            lg={5.7}
+            md={5.7}
+            p={2}
+            sx={{
+              background: "#F8F8FF",
+              borderRadius: "15px",
+              gap: "10px",
+              spacing: "10px",
+            }}
           >
-            <Box
-              component={"img"}
-              src={Email_Icon}
-              sx={classes.contactUsIconStyle}
-            />
-            <span style={{ flexGrow: 1 }}>info@bigGuard.com</span>
-          </Typography>
+            <img src={TalkImage} alt="TalkImage" />
+          </Grid>
 
-          <Typography
-            sx={classes.contactUsInnerTextStyle}
-            variant="subtitle1"
-            mt={1}
+          <Grid
+            item
+            xl={5.7}
+            lg={5.7}
+            md={5.7}
+            sx={{
+              background: "#F8F8FF",
+              borderRadius: "15px",
+              gap: "10px",
+              spacing: "10px",
+            }}
+            p={2}
           >
-            <Box
-              component={"img"}
-              src={WebsiteIcon}
-              sx={classes.contactUsIconStyle}
+            <TextField
+              value={formField.name.value}
+              name="name"
+              id="name"
+              type="text"
+              sx={classes.inputStyle1}
+              placeholder="Enter name"
+              onChange={(event: any) => handleInputOnchange(event)}
             />
-            <span style={{ flexGrow: 1 }}>www.bigGuard.com</span>
-          </Typography>
-
-          <Typography
-            sx={classes.contactUsInnerTextStyle}
-            variant="subtitle1"
-            mt={1}
-          >
-            <Box
-              component={"img"}
-              src={AddressIcon}
-              sx={classes.contactUsIconStyle}
+            <TextField
+              value={formField.email.value}
+              name="email"
+              id="email"
+              type="email"
+              sx={classes.inputStyle}
+              placeholder="Enter email"
+              onChange={(event: any) => handleInputOnchange(event)}
             />
-            <span style={{ flexGrow: 1 }}>Rajpat Nagar,Delhi INDIA</span>
+            <TextField
+              value={formField.subject.value}
+              name="subject"
+              id="subject"
+              type="text"
+              sx={classes.inputStyle}
+              placeholder="Enter subject"
+              onChange={(event: any) => handleInputOnchange(event)}
+            />
+            <TextField
+              value={formField.message.value}
+              name="message"
+              id="message"
+              type="text"
+              sx={classes.inputStyle}
+              placeholder="Enter message"
+              multiline
+              rows={4}
+              onChange={(event: any) => handleInputOnchange(event)}
+            />
+            <Box sx={classes.submitButtonWrapper}>
+              <Button sx={classes.buttonStyle} onClick={handleSubmit}>
+                Submit
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
+      </>
+    );
+  };
+
+  const getContactHeadingPart = () => {
+    return (
+      <>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Typography variant="h3" sx={{ color: "black" }}>
+            {" "}
+            Get In Touch
+          </Typography>
+        </Box>
+        <Box sx={{ display: "flex", justifyContent: "center" }} mt={2}>
+          <Typography variant="h6" sx={{ color: "black" }}>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt
+            voluptate at iste? Ea hic rem doloribus, ipsam nihil at harum dicta
+          </Typography>
+        </Box>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Typography variant="h6" sx={{ color: "black" }}>
+            Lorem ipsum, dolor sit
           </Typography>
         </Box>
       </>
     );
   };
-
-  const getOurServicesMethod = () => {
+  const getMainNavContact = () => {
     return (
       <>
-        <Typography variant="h6" sx={{ color: "white" }}>
-          Our Services
-        </Typography>
-        <Box
-          sx={{
-            marginTop: {
-              xl: "40px",
-              lg: "40px",
-              md: "25px",
-              sm: "25px",
-              xs: "25px",
-            },
-          }}
-        >
-          <Typography sx={{ color: "white" }} variant="subtitle1">
-            Software development
-          </Typography>
-          <Typography sx={{ color: "white" }} variant="subtitle1">
-            Network security & cloud
-          </Typography>
-          <Typography sx={{ color: "white" }} variant="subtitle1">
-            Game Development
-          </Typography>
-          <Typography sx={{ color: "white" }} variant="subtitle1">
-            Web Devlopment
-          </Typography>
-          <Typography sx={{ color: "white" }} variant="subtitle1">
-            Graphic designing
-          </Typography>
-          <Typography sx={{ color: "white" }} variant="subtitle1">
-            sells & Marketing
-          </Typography>
-        </Box>
-      </>
-    );
-  };
-
-  const getAboutUsMethod = () => {
-    return (
-      <>
-        <Typography variant="h6" sx={classes.aboutUsWrapper}>
-          About us
-        </Typography>
-        <Box sx={classes.aboutUsSecondWrapper}>
-          <Typography sx={{ color: "white" }} variant="subtitle1">
-            Career At Comfygen
-          </Typography>
-          <Typography sx={{ color: "white" }} variant="subtitle1">
-            Contact Us
-          </Typography>
-          <Typography sx={{ color: "white" }} variant="subtitle1">
-            About Us
-          </Typography>
-          <Typography sx={{ color: "white" }} variant="subtitle1">
-            Client Testimonial
-          </Typography>
-          <Typography sx={{ color: "white" }} variant="subtitle1">
-            Our Blog
-          </Typography>
-        </Box>
-      </>
-    );
-  };
-
-  const getCompanyMethod = () => {
-    return (
-      <>
-        <Typography variant="h4" sx={classes.companyNameTextStyle}>
-          BigGuard Technologies
-        </Typography>
-        <Typography variant="subtitle1" sx={classes.bigGuardTextStyle}>
-          BigGuard takes pride in being one of the leading cryptocurrency
-          companies working to create aflawless development of cryptocurrency
-          apps and software.
-        </Typography>
-        <Box mt={4} sx={classes.iconWrapper}>
-          <Box component={"img"} src={LinkdlnIcon} />
-          <Box component={"img"} src={TwitterIcon} />
-          <Box component={"img"} src={InstragramIcon} />
-          <Box component={"img"} src={FacebookIcon} />
-        </Box>
-      </>
-    );
-  };
-
-  const getContactMainMethod = () => {
-    return (
-      <>
-        <Box sx={classes.mainWrapper} style={{ paddingBottom: "40px" }}>
+        <Box sx={classes.mainWrapper} mt={8}>
           <Grid container>
-            <Grid item xl={4} lg={4} md={12} sm={12} xs={12} mt={5}>
-              {getCompanyMethod()}
+            <Grid item xl={12} lg={12} md={12} sm={12} xs={12} mt={3}>
+              {getContactHeadingPart()}
             </Grid>
-            <Grid item xl={8} lg={8} md={12} sm={12} xs={12} mt={5}>
-              <Grid container gap={{ xl: 0, lg: 0, md: 3, sm: 3, xs: 3 }}>
-                <Grid item lg={4} md={12} sm={12} xs={12}>
-                  {getAboutUsMethod()}
-                </Grid>
-                <Grid item lg={4} md={12} sm={12} xs={12}>
-                  {getOurServicesMethod()}
-                </Grid>
-                <Grid
-                  item
-                  lg={4}
-                  md={12}
-                  sm={12}
-                  xs={12}
-                  sx={classes.contactUsGridWrapper}
-                >
-                  {getContactUsMethod()}
-                </Grid>
-              </Grid>
+            <Grid item xl={12} lg={12} md={12} sm={12} xs={12} mt={3}>
+              {getContactFormMethod()}
             </Grid>
           </Grid>
         </Box>
-        {getFooter()}
       </>
     );
   };
-  return getContactMainMethod();
+  return getMainNavContact();
 };
 export default React.memo(Contact);

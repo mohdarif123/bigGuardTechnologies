@@ -11,11 +11,12 @@ const NavbarStyle = {
     //   sm: "0 2rem",
     //   xs: "0 1rem",
     // },
-    padding:"0 4rem",
+    padding: "0 4rem",
     position: "fixed",
     top: 0,
     right: 0,
     left: 0,
+    zIndex: 9999,
   },
   navLinkWrapper: {
     display: "flex",
@@ -60,7 +61,7 @@ const NavbarStyle = {
     cursor: "pointer",
     margin: "0 1rem",
     "&:hover": {
-      color: "#000",
+      color: "skyblue",
     },
   },
   navigationText2: {

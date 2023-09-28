@@ -10,10 +10,10 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import { red } from "@mui/material/colors";
-import TestimonialStyle from "./Testimonials.style";
+import OurWorkedStyle from "./OurWorked.style";
 
-const Testimonials = () => {
-  const classes = TestimonialStyle;
+const OurWorked = () => {
+  const classes = OurWorkedStyle;
 
   const swiperParams = {
     modules: [Navigation],
@@ -31,11 +31,13 @@ const Testimonials = () => {
 
   const projectData = [
     {
-      projectName: "Simpana",
+      projectName: "abc",
       projectLocation: "USA",
       projectOwnerImage: "img",
       projectDescription:
         "abc lorem*50 india is great sdkj sdlflds pofdsf sdf re rew vdsp wemvds weabc lorem*50 india is great sdkj sdlflds pofdsf sdfwvmpsd rew vdsp wemvds wer",
+      projectGitLink: "git link",
+      projectLiveLink: "abc.com",
     },
     {
       projectName: "abc",
@@ -43,13 +45,25 @@ const Testimonials = () => {
       projectOwnerImage: "img",
       projectDescription:
         "abc lorem*50 india is grre wvmf dfm sdfpo weroewmfsd epr dsfmer ewfmsdp fm ewpr mpre wvmpsd rew vdsp wemvds weabc lorem*50 india is great sdkj sdlflds pofdsf sdfwen dspojewrm vdsojfewm dfpwer msdfpfsdkfwoe dsdsf dfm sdfpo weroewmfsd epr dsfmer ewfmsdp fm ewpr mpre wvmpsd rew vdsp wemvds wer",
+      projectGitLink: "git link",
+      projectLiveLink: "abc.com",
     },
     {
       projectName: "abc",
       projectLocation: "USA",
       projectOwnerImage: "img",
       projectDescription:
-        "abc lorem*50 india is grre wvmf dfm sdfpo weroewmfsd epr dsfmer ewfmsdp fm ewpr mpre wvmpsd rew vdsp wemvds weabc lorem*50 india is great sdkj sdlflds pofdsf sdfwen dspojewrm vdsojfewm dfpwer msdfpfsdkfwoe dsdsf dfm sdfpo weroewmfsd epr dsfmer ewfmsdp fm ewpr mpre wvmpsd rew vdsp wemvds wer",
+        "abc lorem*50 india is greawrm vdsojfewm dfpwer msdbc lorem*50 india is gsdsf dfm sdfpo weroewmfsd epr dsfmer ewfmsdp fm ewpr mpre wvmpsd rew vdsp wemvds wer",
+      projectGitLink: "git link",
+      projectLiveLink: "abc.com",
+    },
+    {
+      projectName: "abc",
+      projectLocation: "USA",
+      projectOwnerImage: "img",
+      projectDescription: "abc sdf sdfkj sdfjlk sdf djlkj l kj l klj ",
+      projectGitLink: "git link",
+      projectLiveLink: "abc.com",
     },
   ];
 
@@ -57,7 +71,7 @@ const Testimonials = () => {
     return (
       <>
         <Box sx={classes.cardWrapperStyle} px={2}>
-          <Box sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex", width: "100%"}}>
             <Box sx={classes.cardSecondWrapper}>
               <Typography>{items?.projectOwnerImage}</Typography>
             </Box>
@@ -71,11 +85,22 @@ const Testimonials = () => {
               {items?.projectDescription}
             </Typography>
           </Box>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Typography
+              variant="subtitle1"
+              sx={{ fontSize: "18px", color: "black", fontWeight: 600 }}
+            >
+              Project live link :{" "}
+              <Typography component={"span"} sx={classes.projectLinkStyle}>
+                {items?.projectLiveLink}
+              </Typography>
+            </Typography>
+          </Box>
         </Box>
       </>
     );
   };
-  const clientSaysMethod = () => {
+  const getRealProject = () => {
     return (
       <>
         <Swiper {...swiperParams}>
@@ -91,22 +116,22 @@ const Testimonials = () => {
       </>
     );
   };
-  const getTestimonialsMainMethod = () => {
+  const getRealProjectMain = () => {
     return (
       <>
         <Box sx={classes.mainWrapper}>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
             <Typography variant="h2" sx={{ color: "black" }} mt={4}>
-              Client says
+              My past work
             </Typography>
           </Box>
           <Box pt={6} pb={4}>
-            {clientSaysMethod()}
+            {getRealProject()}
           </Box>
         </Box>
       </>
     );
   };
-  return getTestimonialsMainMethod();
+  return getRealProjectMain();
 };
-export default Testimonials;
+export default OurWorked;

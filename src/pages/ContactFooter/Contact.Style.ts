@@ -17,7 +17,7 @@ const contactStyle = {
   },
   bigGuardTextStyle: {
     marginTop: "40px",
-    color: "#696969",
+    color: "white",
   },
   iconWrapper: {
     display: "flex",

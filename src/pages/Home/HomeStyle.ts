@@ -39,5 +39,9 @@ const HomeStyle = {
       color: "rgb(255 255 255 / 50%)",
     },
   },
+  textStyling: {
+    color: "transparent",
+    WebkitTextStroke: "2px white",
+  },
 } as const;
 export default HomeStyle;
