@@ -2,37 +2,31 @@ import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import NavContactStyle from "./NavContact.style";
 import React, { useState } from "react";
 import TalkImage from "../../assets/Images/TalkImage.svg";
+import { contactFormInitialState, handleFormValidation } from "./ContactData";
 
 const Contact = () => {
   const classes = NavContactStyle;
-  const [formField, setFormField] = useState({
-    name: {
-      value: "",
-      error: "",
-    },
-    email: {
-      value: "",
-      error: "",
-    },
-    subject: {
-      value: "",
-      error: "",
-    },
-    message: {
-      value: "",
-      error: "",
-    },
-  });
+
+  const [formField, setFormField] = useState(contactFormInitialState);
 
   const handleInputOnchange = (event: any) => {
     setFormField({
       ...formField,
-      [event.target.name]: event.target.value,
+      [event.target.name]: {
+        value: event.target.value,
+        error: "",
+      },
     });
   };
 
+  const validationCheckMethod = () => {
+    const { isValid, errors } = handleFormValidation(formField);
+    setFormField({ ...errors });
+    return isValid;
+  };
+
   const handleSubmit = () => {
-    if (formField) {
+    if (validationCheckMethod()) {
       console.log("submit");
     } else {
       console.log("please enter your remaining field");
@@ -85,6 +79,7 @@ const Contact = () => {
               sx={classes.inputStyle1}
               placeholder="Enter name"
               onChange={(event: any) => handleInputOnchange(event)}
+              helperText={formField.name.error}
             />
             <TextField
               value={formField.email.value}
@@ -94,6 +89,7 @@ const Contact = () => {
               sx={classes.inputStyle}
               placeholder="Enter email"
               onChange={(event: any) => handleInputOnchange(event)}
+              helperText={formField.email.error}
             />
             <TextField
               value={formField.subject.value}
@@ -103,6 +99,7 @@ const Contact = () => {
               sx={classes.inputStyle}
               placeholder="Enter subject"
               onChange={(event: any) => handleInputOnchange(event)}
+              helperText={formField.subject.error}
             />
             <TextField
               value={formField.message.value}
@@ -114,6 +111,7 @@ const Contact = () => {
               multiline
               rows={4}
               onChange={(event: any) => handleInputOnchange(event)}
+              helperText={formField.message.error}
             />
             <Box sx={classes.submitButtonWrapper}>
               <Button sx={classes.buttonStyle} onClick={handleSubmit}>

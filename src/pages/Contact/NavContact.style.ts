@@ -36,6 +36,9 @@ const NavContactStyle = {
     },
   },
   inputStyle1: {
+    "& :css-1wc848c-MuiFormHelperText-root": {
+      color: "red",
+    },
     borderRadius: "5px",
     width: "100%",
   },
